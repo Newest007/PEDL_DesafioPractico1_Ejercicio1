@@ -39,6 +39,7 @@ namespace Ejercicio_1_Desafio_Practico_1
             this.numUpDown = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown)).BeginInit();
@@ -46,30 +47,38 @@ namespace Ejercicio_1_Desafio_Practico_1
             // 
             // btnEncolar
             // 
+            this.btnEncolar.BackColor = System.Drawing.Color.White;
+            this.btnEncolar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEncolar.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEncolar.Location = new System.Drawing.Point(328, 16);
+            this.btnEncolar.ForeColor = System.Drawing.Color.Black;
+            this.btnEncolar.Location = new System.Drawing.Point(304, 16);
             this.btnEncolar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEncolar.Name = "btnEncolar";
             this.btnEncolar.Size = new System.Drawing.Size(100, 45);
             this.btnEncolar.TabIndex = 0;
             this.btnEncolar.Text = "Encolar";
-            this.btnEncolar.UseVisualStyleBackColor = true;
+            this.btnEncolar.UseVisualStyleBackColor = false;
             this.btnEncolar.Click += new System.EventHandler(this.btnEncolar_Click);
             // 
             // btnDesencolar
             // 
+            this.btnDesencolar.BackColor = System.Drawing.Color.White;
+            this.btnDesencolar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDesencolar.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDesencolar.Location = new System.Drawing.Point(307, 69);
+            this.btnDesencolar.Location = new System.Drawing.Point(285, 69);
             this.btnDesencolar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDesencolar.Name = "btnDesencolar";
             this.btnDesencolar.Size = new System.Drawing.Size(134, 45);
             this.btnDesencolar.TabIndex = 1;
             this.btnDesencolar.Text = "Desencolar";
-            this.btnDesencolar.UseVisualStyleBackColor = true;
+            this.btnDesencolar.UseVisualStyleBackColor = false;
+            this.btnDesencolar.Click += new System.EventHandler(this.btnDesencolar_Click);
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(34, 150);
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(81)))));
+            this.panel1.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(34, 161);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(591, 247);
@@ -77,7 +86,7 @@ namespace Ejercicio_1_Desafio_Practico_1
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(147)))), ((int)(((byte)(81)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(81)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.numUpDown);
@@ -105,6 +114,7 @@ namespace Ejercicio_1_Desafio_Practico_1
             // 
             // numUpDown
             // 
+            this.numUpDown.BackColor = System.Drawing.Color.White;
             this.numUpDown.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numUpDown.Location = new System.Drawing.Point(134, 57);
             this.numUpDown.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -132,10 +142,16 @@ namespace Ejercicio_1_Desafio_Practico_1
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // timer2
+            // 
+            this.timer2.Interval = 10;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(657, 429);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -164,6 +180,7 @@ namespace Ejercicio_1_Desafio_Practico_1
         private System.Windows.Forms.NumericUpDown numUpDown;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 

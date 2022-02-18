@@ -16,9 +16,8 @@ namespace Ejercicio_1_Desafio_Practico_1
 
         Queue<String> colaTipoString = new Queue<string>();
 
-        int x = 450;
-        int y = 70;
-
+        int x = 530;
+        int y = 80;
 
         public Form1()
         {
@@ -40,12 +39,13 @@ namespace Ejercicio_1_Desafio_Practico_1
             int valor = Convert.ToInt32(numUpDown.Value);
             Label miLabel = new Label();
             miLabel.Text = valor.ToString();
-            miLabel.BackColor = Color.White;
+            miLabel.BackColor = Color.Transparent;
+
             miLabel.Height = 50;
             miLabel.Width = 50;
             miLabel.TextAlign = ContentAlignment.MiddleCenter;
             miLabel.BorderStyle = BorderStyle.FixedSingle;
-            miLabel.Location = new Point(0, 0);
+            miLabel.Location = new Point(0, 20);
 
 
             if (colaTipoString.Contains(miLabel.Text))
@@ -67,7 +67,7 @@ namespace Ejercicio_1_Desafio_Practico_1
         {
             btnEncolar.Enabled = false;
             Label PrimeroCola = colaPrincipal.Last();
-            PrimeroCola.BackColor = Color.Aqua;
+            PrimeroCola.BackColor = Color.Transparent;
 
             if (PrimeroCola.Location.X < x) 
             {
@@ -85,6 +85,49 @@ namespace Ejercicio_1_Desafio_Practico_1
             timer1.Stop();
             PrimeroCola.BackColor = Color.White;
             btnEncolar.Enabled = true;
+
+        }
+
+        private void btnDesencolar_Click(object sender, EventArgs e)
+        {
+            if(colaPrincipal.Count == 0)
+            {
+                MessageBox.Show("La Cola esta vacía","Atención",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            timer2.Start();
+
+
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            btnDesencolar.Enabled = false;
+            Label labelaEliminar = colaPrincipal.Peek();
+            labelaEliminar.BackColor = Color.Transparent;
+
+            if(labelaEliminar.Location.Y > 20)
+            {
+                labelaEliminar.Location = new Point(labelaEliminar.Location.X, labelaEliminar.Location.Y - 5);
+                return;
+            }
+
+            if(labelaEliminar.Location.X > -50)
+            {
+                labelaEliminar.Location = new Point(labelaEliminar.Location.X - 5, labelaEliminar.Location.Y);
+                return;
+            }
+
+            colaTipoString.Dequeue();
+            colaPrincipal.Dequeue();
+
+
+            panel1.Controls.Remove(labelaEliminar);
+            x += labelaEliminar.Width;
+
+            timer2.Stop();
+            btnDesencolar.Enabled = true;
 
         }
     }
