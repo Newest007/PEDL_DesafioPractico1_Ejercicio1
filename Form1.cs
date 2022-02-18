@@ -14,8 +14,10 @@ namespace Ejercicio_1_Desafio_Practico_1
     {
         Queue<Label> colaPrincipal = new Queue<Label>();
 
-        int x = 0;
-        int y = 50;
+        Queue<String> colaTipoString = new Queue<string>();
+
+        int x = 450;
+        int y = 70;
 
 
         public Form1()
@@ -23,24 +25,18 @@ namespace Ejercicio_1_Desafio_Practico_1
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+        private void button3_Click(object sender, EventArgs e) { }
+
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+        private void Form1_Load(object sender, EventArgs e) { }
 
         private void btnEncolar_Click(object sender, EventArgs e)
         {
-
             int valor = Convert.ToInt32(numUpDown.Value);
             Label miLabel = new Label();
             miLabel.Text = valor.ToString();
@@ -51,42 +47,44 @@ namespace Ejercicio_1_Desafio_Practico_1
             miLabel.BorderStyle = BorderStyle.FixedSingle;
             miLabel.Location = new Point(0, 0);
 
-            if (colaPrincipal.Contains(miLabel))
+
+            if (colaTipoString.Contains(miLabel.Text))
             {
-                MessageBox.Show("El valor ya se encuentra en la Cola, pruebe con otro valor", "Advertencia!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("El valor ya existe en la cola, pruebe con otro valor","Advertencia",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            else
+            {
+                colaTipoString.Enqueue(miLabel.Text); //Cola Tipo String
+                colaPrincipal.Enqueue(miLabel); //Cola Tipo Label
+                panel1.Controls.Add(miLabel);
+                timer1.Start();
             }
 
-            colaPrincipal.Enqueue(miLabel);
-            
-            /*if (colaPrincipal.Contains(miLabel))
-            {
-                MessageBox.Show("El valor ya se encuentra en la Cola, pruebe con otro valor", "Advertencia!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }*/
-
-            panel1.Controls.Add(miLabel);
-            timer1.Start();
-            
-
+           
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             btnEncolar.Enabled = false;
-            Label PrimeroCola = colaPrincipal.Peek();
+            Label PrimeroCola = colaPrincipal.Last();
             PrimeroCola.BackColor = Color.Aqua;
 
-            if (PrimeroCola.Location.X < 450) 
+            if (PrimeroCola.Location.X < x) 
             {
                 PrimeroCola.Location = new Point(PrimeroCola.Location.X + 5, PrimeroCola.Location.Y);
                 return;
             }
-            
-            
 
+            if(PrimeroCola.Location.Y < y)
+            {
+                PrimeroCola.Location = new Point(PrimeroCola.Location.X, PrimeroCola.Location.Y + 5);
+                return;
+            }
 
-
+            x -= PrimeroCola.Width;
+            timer1.Stop();
+            PrimeroCola.BackColor = Color.White;
+            btnEncolar.Enabled = true;
 
         }
     }
